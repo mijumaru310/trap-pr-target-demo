@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-
-/* bsortŠÖ”‚Ì‚İ‚ğ•ÏX‚µ‚Ä‚­‚¾‚³‚¢ */
+//ã“ã“ã«ã‚³ãƒ¡ãƒ³ãƒˆã„ã‚ŒãŸã‚ˆ
+/* bsorté–¢æ•°ã®ã¿ã‚’å¤‰æ›´ã—ã¦ãã ã•ã„ */
 
 
 void printarray(int *array, int num){
 /*
-    —v‘f”num‚Ì”z—ñ‚ğ•\¦‚µ‚Ü‚·
+    è¦ç´ æ•°numã®é…åˆ—ã‚’è¡¨ç¤ºã—ã¾ã™
 */
     int i;
     printf("\n <printarray>\n");
@@ -21,10 +21,10 @@ void printarray(int *array, int num){
 
 void bsort(int *array, int num, int mode){
 /*
-    ƒoƒuƒ‹ƒ\[ƒg‚ğÀs‚µ‚Ü‚·
-    array:“ü‚ê‘Ö‚¦‚é‚×‚«”z—ñ‚Ö‚Ìƒ|ƒCƒ“ƒ^
-    num:”z—ñ‚Ì—v‘f”
-    mode:0‚Å¸‡A1‚Å~‡
+    ãƒãƒ–ãƒ«ã‚½ãƒ¼ãƒˆã‚’å®Ÿè¡Œã—ã¾ã™
+    array:å…¥ã‚Œæ›¿ãˆã‚‹ã¹ãé…åˆ—ã¸ã®ãƒã‚¤ãƒ³ã‚¿
+    num:é…åˆ—ã®è¦ç´ æ•°
+    mode:0ã§æ˜‡é †ã€1ã§é™é †
 */
 
     for(int i=0;i<100;i++)
@@ -32,7 +32,7 @@ void bsort(int *array, int num, int mode){
         for(int j=99;j>i;j--)
         {
             if(mode==0){
-                //¸‡ƒoƒuƒ‹
+                //æ˜‡é †ãƒãƒ–ãƒ«
                 if(*(array+j)<*(array+j-1)){
                     int p;
                     p=*(array+j);
@@ -41,7 +41,7 @@ void bsort(int *array, int num, int mode){
                 }
 
             }else if(mode==1){
-                //~‡ƒoƒuƒ‹
+                //é™é †ãƒãƒ–ãƒ«
                 if(*(array+j)>*(array+j-1)){
                     int p;
                     p=*(array+j);
@@ -68,7 +68,7 @@ int main(void){
 
 	srand(time(NULL));
 
-    printf("¸‡:");
+    printf("æ˜‡é †:");
 
     for(i=0;i<100;i++){
         array[i]=rand()%1000;
@@ -79,7 +79,7 @@ int main(void){
 
     printarray(array,100);
 
-    printf("~‡:");
+    printf("é™é †:");
 
     for(i=0;i<100;i++){
         array[i]=rand()%1000;
