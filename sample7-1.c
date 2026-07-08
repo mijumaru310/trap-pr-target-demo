@@ -2,12 +2,12 @@
 #include <stdlib.h>
 #include <time.h>
 
-/* bsortŠÖ”‚Ì‚İ‚ğ•ÏX‚µ‚Ä‚­‚¾‚³‚¢ */
+/* bsorté–¢æ•°ã®ã¿ã‚’å¤‰æ›´ã—ã¦ãã ã•ã„ */
 
 
 void printarray(int *array, int num){
 /*
-    —v‘f”num‚Ì”z—ñ‚ğ•\¦‚µ‚Ü‚·
+    è¦ç´ æ•°numã®é…åˆ—ã‚’è¡¨ç¤ºã—ã¾ã™
 */
     int i;
     printf("\n <printarray>\n");
@@ -21,18 +21,20 @@ void printarray(int *array, int num){
 
 void bsort(int *array, int num, int mode){
 /*
-    ƒoƒuƒ‹ƒ\[ƒg‚ğÀs‚µ‚Ü‚·
-    array:“ü‚ê‘Ö‚¦‚é‚×‚«”z—ñ‚Ö‚Ìƒ|ƒCƒ“ƒ^
-    num:”z—ñ‚Ì—v‘f”
-    mode:0‚Å¸‡A1‚Å~‡
+    ãƒãƒ–ãƒ«ã‚½ãƒ¼ãƒˆã‚’å®Ÿè¡Œã—ã¾ã™
+    array:å…¥ã‚Œæ›¿ãˆã‚‹ã¹ãé…åˆ—ã¸ã®ãƒã‚¤ãƒ³ã‚¿
+    num:é…åˆ—ã®è¦ç´ æ•°
+    mode:0ã§æ˜‡é †ã€1ã§é™é †
 */
 
-    for(int i=0;i<100;i++)
+    // ã‚½ãƒ¼ãƒˆå›æ•°ã‚’é…åˆ—ã®è¦ç´ æ•°ã«åˆã‚ã›ã‚‹
+    for(int i=0;i<num;i++) // å¤–å´ã®ãƒ«ãƒ¼ãƒ—ã¯numå›ç¹°ã‚Šè¿”ã™
     {
-        for(int j=99;j>i;j--)
+        // å†…å´ã®ãƒ«ãƒ¼ãƒ—ã¯æœªã‚½ãƒ¼ãƒˆéƒ¨åˆ†ã‚’å¯¾è±¡
+        for(int j=num-1;j>i;j--)
         {
             if(mode==0){
-                //¸‡ƒoƒuƒ‹
+                //æ˜‡é †ãƒãƒ–ãƒ«
                 if(*(array+j)<*(array+j-1)){
                     int p;
                     p=*(array+j);
@@ -41,7 +43,7 @@ void bsort(int *array, int num, int mode){
                 }
 
             }else if(mode==1){
-                //~‡ƒoƒuƒ‹
+                //é™é †ãƒãƒ–ãƒ«
                 if(*(array+j)>*(array+j-1)){
                     int p;
                     p=*(array+j);
@@ -68,7 +70,7 @@ int main(void){
 
 	srand(time(NULL));
 
-    printf("¸‡:");
+    printf("æ˜‡é †:");
 
     for(i=0;i<100;i++){
         array[i]=rand()%1000;
@@ -79,7 +81,7 @@ int main(void){
 
     printarray(array,100);
 
-    printf("~‡:");
+    printf("é™é †:");
 
     for(i=0;i<100;i++){
         array[i]=rand()%1000;
@@ -92,5 +94,3 @@ int main(void){
 
     return 0;
 }
-
-
