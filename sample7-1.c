@@ -2,12 +2,12 @@
 #include <stdlib.h>
 #include <time.h>
 
-/* bsortŠÖ”‚Ì‚İ‚ğ•ÏX‚µ‚Ä‚­‚¾‚³‚¢ */
+/* bsorté–¢æ•°ã®ã¿ã‚’å¤‰æ›´ã—ã¦ãã ã•ã„ */
 
 
 void printarray(int *array, int num){
 /*
-    —v‘f”num‚Ì”z—ñ‚ğ•\¦‚µ‚Ü‚·
+    è¦ç´ æ•°numã®é…åˆ—ã‚’è¡¨ç¤ºã—ã¾ã™
 */
     int i;
     printf("\n <printarray>\n");
@@ -21,18 +21,23 @@ void printarray(int *array, int num){
 
 void bsort(int *array, int num, int mode){
 /*
-    ƒoƒuƒ‹ƒ\[ƒg‚ğÀs‚µ‚Ü‚·
-    array:“ü‚ê‘Ö‚¦‚é‚×‚«”z—ñ‚Ö‚Ìƒ|ƒCƒ“ƒ^
-    num:”z—ñ‚Ì—v‘f”
-    mode:0‚Å¸‡A1‚Å~‡
+    ãƒãƒ–ãƒ«ã‚½ãƒ¼ãƒˆã‚’å®Ÿè¡Œã—ã¾ã™
+    array:å…¥ã‚Œæ›¿ãˆã‚‹ã¹ãé…åˆ—ã¸ã®ãƒã‚¤ãƒ³ã‚¿
+    num:é…åˆ—ã®è¦ç´ æ•°
+    mode:0ã§æ˜‡é †ã€1ã§é™é †
 */
 
-    for(int i=0;i<100;i++)
+    printf("Sorting started...\n");
+    // é€²æ—è¡¨ç¤ºã®ãŸã‚ã®ã‚«ã‚¦ãƒ³ã‚¿ã‚’åˆæœŸåŒ–
+    int progress_interval = (num > 10) ? (num / 10) : 1; // 10%åˆ»ã¿ã€ã¾ãŸã¯æœ€ä½1ã‚¹ãƒ†ãƒƒãƒ—
+    int next_progress_step = progress_interval;
+
+    for(int i=0;i<num;i++) // ãƒ«ãƒ¼ãƒ—å›æ•°ã‚’èª¿æ•´
     {
-        for(int j=99;j>i;j--)
+        for(int j=num-1;j>i;j--)
         {
             if(mode==0){
-                //¸‡ƒoƒuƒ‹
+                //æ˜‡é †ãƒãƒ–ãƒ«
                 if(*(array+j)<*(array+j-1)){
                     int p;
                     p=*(array+j);
@@ -41,7 +46,7 @@ void bsort(int *array, int num, int mode){
                 }
 
             }else if(mode==1){
-                //~‡ƒoƒuƒ‹
+                //é™é †ãƒãƒ–ãƒ«
                 if(*(array+j)>*(array+j-1)){
                     int p;
                     p=*(array+j);
@@ -50,17 +55,17 @@ void bsort(int *array, int num, int mode){
                 }
 
             }else{
-                printf("Error\n");
-                
+                printf("Error: Invalid mode\n");
+                // ã‚¨ãƒ©ãƒ¼ç™ºç”Ÿæ™‚ã‚‚ã‚½ãƒ¼ãƒˆã‚’ç¶šè¡Œã•ã›ã‚‹
             }
-
         }
-
-
+        // é€²æ—è¡¨ç¤ºã®æ›´æ–°
+        if (i >= next_progress_step) {
+            printf("Progress: %d%%\n", (i * 100 / num));
+            next_progress_step += progress_interval;
+        }
     }
-
-
-
+    printf("Sorting finished.\n");
 }
 
 int main(void){
@@ -68,7 +73,7 @@ int main(void){
 
 	srand(time(NULL));
 
-    printf("¸‡:");
+    printf("æ˜‡é †:\n");
 
     for(i=0;i<100;i++){
         array[i]=rand()%1000;
@@ -79,7 +84,7 @@ int main(void){
 
     printarray(array,100);
 
-    printf("~‡:");
+    printf("é™é †:\n");
 
     for(i=0;i<100;i++){
         array[i]=rand()%1000;
@@ -92,5 +97,3 @@ int main(void){
 
     return 0;
 }
-
-
