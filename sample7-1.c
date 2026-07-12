@@ -1,96 +1,37 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-
-/* bsortŠÖ”‚Ì‚İ‚ğ•ÏX‚µ‚Ä‚­‚¾‚³‚¢ */
-
-
-void printarray(int *array, int num){
-/*
-    —v‘f”num‚Ì”z—ñ‚ğ•\¦‚µ‚Ü‚·
-*/
-    int i;
-    printf("\n <printarray>\n");
-
-    for(i=0;i<num;i++){
-        printf("%d ",*(array+i));
-    }
-
-    printf("\n");
-}
-
 void bsort(int *array, int num, int mode){
 /*
-    ƒoƒuƒ‹ƒ\[ƒg‚ğÀs‚µ‚Ü‚·
-    array:“ü‚ê‘Ö‚¦‚é‚×‚«”z—ñ‚Ö‚Ìƒ|ƒCƒ“ƒ^
-    num:”z—ñ‚Ì—v‘f”
-    mode:0‚Å¸‡A1‚Å~‡
+    ãƒãƒ–ãƒ«ã‚½ãƒ¼ãƒˆã‚’å®Ÿè¡Œã—ã¾ã™
+    array:å…¥ã‚Œæ›¿ãˆã‚‹ã¹ãé…åˆ—ã¸ã®ãƒã‚¤ãƒ³ã‚¿
+    num:é…åˆ—ã®è¦ç´ æ•°
+    mode:0ã§æ˜‡é †ã€1ã§é™é †
 */
 
-    for(int i=0;i<100;i++)
+    for(int i=0; i < num; i++) // ãƒ«ãƒ¼ãƒ—æ¡ä»¶ã‚’ä¿®æ­£
     {
-        for(int j=99;j>i;j--)
+        for(int j=num - 1; j > i; j--)
         {
             if(mode==0){
-                //¸‡ƒoƒuƒ‹
-                if(*(array+j)<*(array+j-1)){
+                //æ˜‡é †ãƒãƒ–ãƒ«
+                if(*(array+j) < *(array+j-1)){
                     int p;
-                    p=*(array+j);
-                    *(array+j)=*(array+j-1);
-                    *(array+j-1)=p;
+                    p = *(array+j);
+                    *(array+j) = *(array+j-1);
+                    *(array+j-1) = p;
                 }
 
             }else if(mode==1){
-                //~‡ƒoƒuƒ‹
-                if(*(array+j)>*(array+j-1)){
+                //é™é †ãƒãƒ–ãƒ«
+                if(*(array+j) > *(array+j-1)){
                     int p;
-                    p=*(array+j);
-                    *(array+j)=*(array+j-1);
-                    *(array+j-1)=p;
+                    p = *(array+j);
+                    *(array+j) = *(array+j-1);
+                    *(array+j-1) = p;
                 }
 
             }else{
-                printf("Error\n");
-                
+                printf("Error: Invalid sort mode.\n");
+                // ã‚¨ãƒ©ãƒ¼å‡¦ç†ã‚’çœç•¥ã—ã¦ç¶šè¡Œ
             }
-
         }
-
-
     }
-
-
-
 }
-
-int main(void){
-    int i,array[100];
-
-	srand(time(NULL));
-
-    printf("¸‡:");
-
-    for(i=0;i<100;i++){
-        array[i]=rand()%1000;
-    }
-    printarray(array,100);
-
-    bsort(array,100,0);
-
-    printarray(array,100);
-
-    printf("~‡:");
-
-    for(i=0;i<100;i++){
-        array[i]=rand()%1000;
-    }
-    printarray(array,100);
-
-    bsort(array,100,1);
-
-    printarray(array,100);
-
-    return 0;
-}
-
-
